@@ -31,7 +31,7 @@ User provides the Active Directory Domain Name. The DGA algorithm is case sensit
 
 .\moonlight.ps1 -ADomain sunburst.local
 
-Output : **Splunk query example: index=proxylogs dest_host=*6fvcfsi0h12eu1* | fields + dest_host**
+Output : **Splunk query example: index=proxylogs dest_host=\*6fvcfsi0h12eu1\* | fields + dest_host**
 
 # Other possible detection
 
