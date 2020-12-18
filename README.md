@@ -13,7 +13,7 @@ The **[DGA]** is in the format **[part1][part2][part3]** where:
     
 # moonlight.ps1
 
-The script will generate the **[part3]** which can be used for detection with proxy logs
+The script will generate the **[part3]** which can be used for detection with proxy, DNS logs
 
 99% of code are ported from sunburst C# code
 
@@ -31,9 +31,13 @@ User provides the Active Directory Domain Name. The DGA algorithm is case sensit
 
 .\moonlight.ps1 -ADomain sunburst.local
 
-Output : **Splunk query example: index=proxylogs dest_host=\*6fvcfsi0h12eu1\* | fields + dest_host**
+Output :
 
-# Other possible detection
+**The DGA for domain sunburst.local is 6fvcfsi0h12eu1**
+
+**Splunk query example: index=proxylogs dest_host=\*6fvcfsi0h12eu1\* | fields + dest_host**
+
+# Other possible detections
 
 Sunburst generates http user-agent depends on the HTTP method
 
