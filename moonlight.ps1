@@ -98,5 +98,5 @@ else
 {
     $dga = DGA -domain $ADomain
     write-host "The DGA for domain $ADomain is $dga"
-    write-host "Splunk query example: index=proxylogs dest_host=*$a* | fields + dest_host"
+    write-host "Splunk query example: index=proxylogs dest_host=*$dga* | fields + dest_host"
 }
