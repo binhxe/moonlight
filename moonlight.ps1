@@ -1,20 +1,20 @@
-﻿# MoonLight 17/12/2020
-# 
+# MoonLight 17/12/2020
 
 param (
     $ADomain = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties().DomainName
 )
+
 function Base64Decode($s)
 {
     
 	$text = "rq3gsalt6u1iyfzop572d49bnx8cvmkewhj"    	
 	$text2 = "0_-."
 	$text3 = ""
-    $random = New-Object -TypeName System.Random
+	$random = New-Object -TypeName System.Random
 	
 	foreach ($value in [char[]]$s)
 	{
-	    $num = $text2.IndexOf($value)
+		$num = $text2.IndexOf($value)
         if ($num -lt 0)
         {
             $text3 = $text3 + $text[($text.IndexOf($value) + 4) % $text.Length]
@@ -76,7 +76,7 @@ function DGA($domain)
         }
     }
 				
-	if($encode)
+    if($encode)
     {
         $retval =  "00"
         $domain_bytes = [System.Text.Encoding]::UTF8.GetBytes($domain)
@@ -90,6 +90,13 @@ function DGA($domain)
     return $retval
 }
 
-
-$a = DGA -domain $ADomain
-write-host "Splunk query example: index=proxylogs dest_host=*$a* | fields + dest_host"
+if ($ADomain -eq "")
+{
+    write-host "No AD domain detected. Please provide AD domain manually"
+}
+else
+{
+    $dga = DGA -domain $ADomain
+    write-host "The DGA for domain $ADomain is $dga"
+    write-host "Splunk query example: index=proxylogs dest_host=*$a* | fields + dest_host"
+}
